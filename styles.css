@@ -470,3 +470,185 @@ body{background:#e9dcc6}
   .review-glass-art{opacity:.14!important;transition:none!important}
   .review-orbit,.review-reveal-label,.review-floating-note,.review-glint{opacity:.93!important;transition:none!important}
 }
+
+/* ==============================================================
+   VIVI · Ajuste aprobado 2026-10-20
+   Sin panel gigante bajo el logotipo, solo fondo marfil/champán
+   con líneas luminosas animadas. Tarjetas horizontales compactas.
+   ============================================================== */
+body{
+  background:linear-gradient(145deg,#f1e8dc 0%,#f0ddbf 45%,#e1c9a8 100%);
+}
+.ambient{
+  display:block!important;
+  z-index:0;
+  position:fixed;
+  inset:0;
+  background:linear-gradient(120deg,#f1e5d5 0%,#efddc3 49%,#dfc09c 100%);
+}
+.ambient-photo{display:none!important}
+.ambient-color{
+  background:
+    radial-gradient(ellipse at 7% 9%,rgba(255,251,241,.72),transparent 43%),
+    radial-gradient(ellipse at 86% 75%,rgba(246,216,168,.50),transparent 52%),
+    linear-gradient(130deg,rgba(255,249,238,.42),rgba(220,166,108,.22));
+}
+.ambient-glow{opacity:.24;filter:blur(78px)}
+.ambient-glow--a{background:#fff5d8}
+.ambient-glow--b{background:#ebbc77}
+.ambient-grain{opacity:.045}
+.light-trails{
+  inset:0;width:100%;height:100%;opacity:1;
+  filter:drop-shadow(0 0 4px rgba(255,250,225,.95)) drop-shadow(0 0 13px rgba(236,178,84,.55));
+}
+.light-trail{
+  stroke:#c79950;stroke-width:1.55;stroke-dasharray:9 20 290 26;
+  animation:trailDrift 24s linear infinite,trailBreath 5.2s ease-in-out infinite alternate;
+}
+.trail-one{opacity:.95}
+.trail-two{opacity:.85;stroke-width:1.45}
+.trail-three{opacity:.6;stroke-width:1.1}
+.trail-four{opacity:.62;stroke-width:1.2}
+.trail-five{opacity:.8;stroke-width:1.3}
+.trail-six{opacity:.7;stroke-width:1.05}
+.trail-seven{opacity:.75;stroke-width:1.3}
+.trail-eight{opacity:.72;stroke-width:1.15}
+.trail-nine{opacity:.50;stroke-width:1.0}
+.ambient-stars i{
+  background:#fffef6;
+  box-shadow:0 0 8px 2px #fff2c7,0 0 20px 7px rgba(219,148,50,.35);
+}
+.page{position:relative;z-index:1;padding:clamp(16px,2.8vw,32px) 16px 35px}
+.showcase{
+  width:min(800px,100%);padding:0;
+  background:transparent!important;
+  box-shadow:none!important;border:0!important;border-radius:0;
+  overflow:visible;backdrop-filter:none;-webkit-backdrop-filter:none;
+}
+.showcase::before,.showcase::after{display:none!important}
+.hero{margin-bottom:18px;padding:0 12px;text-align:center}
+.hero__location{color:#825a38}
+.hero h1{font-size:clamp(75px,8.2vw,104px);filter:drop-shadow(0 6px 9px rgba(129,85,44,.12))}
+.hero__slogan{color:#86502e;text-shadow:0 1px rgba(255,250,236,.65)}
+.cards{gap:11px!important}
+.tile-social,.tile-small{
+  grid-template-columns:143px minmax(0,1fr) auto!important;
+  grid-template-rows:94px!important;
+  grid-template-areas:"art title cta"!important;
+  min-height:0!important;
+  height:112px;
+  padding:8px 11px!important;gap:15px!important;
+  align-items:center;
+  border-radius:19px;
+}
+.tile-social>.tile__art,.tile-small>.tile__art{
+  grid-area:art;height:94px!important;width:143px!important;
+  border-radius:13px;align-self:center;object-fit:cover;
+}
+.tile-social>.tile__social-body,.tile-small>.tile-small__content{
+  grid-area:title;align-self:center;min-height:0!important;min-width:0;margin:0;padding:0;
+}
+.tile-social .tile__social-body{gap:9px}
+.tile__brand-icon{width:30px;height:30px;min-width:30px;border-radius:9px}
+.tile__brand-icon svg{width:18px;height:18px}
+.tile__brand-icon--fb{font-size:29px}
+.tile-social h2,.tile-small__content h2{
+  font-size:clamp(21px,3vw,26px)!important;line-height:1.06;margin:0 0 6px;
+}
+.tile-social p,.tile-small__content p{
+  font-size:9px!important;line-height:1.4;letter-spacing:.05em;margin:0;
+}
+.tile-social>.cta,.tile-small>.cta{
+  grid-area:cta;align-self:center!important;justify-self:end!important;
+  min-width:120px!important;max-width:138px!important;width:138px!important;
+  min-height:33px!important;height:33px!important;
+  padding:3px 4px 3px 9px!important;margin:0!important;
+  font-size:8px!important;letter-spacing:.02em!important;
+}
+.tile-social .cta__arrow,.tile-small .cta__arrow{
+  width:25px!important;height:25px!important;font-size:16px!important;
+}
+.tile::before{border-radius:18px}
+.tile-promo,.tile-booking,.tile-location{min-height:0!important}
+.tile-reviews{padding:14px!important;gap:13px 16px!important;border-radius:22px}
+.tile-reviews::before{border-radius:21px}
+.review-header h2{font-size:clamp(28px,3.4vw,36px)}
+.review-header p{font-size:12px}
+.tile-reviews>.review-stage.review-stage--magic{min-height:228px}
+.cta--reviews{max-width:290px;min-width:0;min-height:39px;font-size:9px}
+.footer{padding-top:6px}
+.footer small{color:#7e5d45}
+/* Tablets y teléfonos: imagen a la izquierda, información y CTA al lado.
+   Así los enlaces continúan siendo rectángulos (no tarjetas gigantes). */
+@media(max-width:760px){
+  .page{padding:18px 13px 29px}
+  .showcase{padding:0!important}
+  .cards{gap:10px!important}
+  .tile-social,.tile-small{
+    grid-template-columns:118px minmax(0,1fr) auto!important;
+    grid-template-rows:80px!important;
+    height:100px!important;padding:9px!important;gap:10px!important;
+  }
+  .tile-social>.tile__art,.tile-small>.tile__art{width:118px!important;height:80px!important}
+  .tile-social h2,.tile-small__content h2{font-size:21px!important}
+  .tile-social p,.tile-small__content p{font-size:7.5px!important}
+  .tile-social>.cta,.tile-small>.cta{
+    width:116px!important;min-width:0!important;max-width:116px!important;
+    font-size:7px!important;padding-left:5px!important;height:30px!important;min-height:30px!important;
+  }
+  .tile-social .cta__arrow,.tile-small .cta__arrow{width:23px!important;height:23px!important}
+  .tile-reviews{grid-template-columns:1fr;grid-template-areas:"reviewText" "reviewStage" "reviewButton"}
+  .tile-reviews>.review-stage.review-stage--magic{min-height:210px}
+  .cta--reviews{max-width:none}
+}
+@media(max-width:560px){
+  .page{padding:15px 10px 24px}
+  .hero{padding:0 3px;margin-bottom:15px}
+  .hero h1{font-size:clamp(62px,18vw,77px)}
+  .hero__slogan{font-size:clamp(17px,5.1vw,21px)}
+  .tile-social,.tile-small{
+    grid-template-columns:94px minmax(0,1fr)!important;
+    grid-template-rows:minmax(38px,auto) 29px!important;
+    grid-template-areas:"art title" "art cta"!important;
+    height:107px!important;min-height:107px!important;
+    padding:8px!important;column-gap:10px!important;row-gap:4px!important;
+  }
+  .tile-social>.tile__art,.tile-small>.tile__art{
+    width:94px!important;height:91px!important;grid-row:1 / 3;
+    border-radius:11px;
+  }
+  .tile-social>.tile__social-body,.tile-small>.tile-small__content{align-self:end}
+  .tile-social .tile__social-body{gap:6px}
+  .tile__brand-icon{width:23px;height:23px;min-width:23px;border-radius:7px}
+  .tile__brand-icon svg{height:16px;width:16px}
+  .tile__brand-icon--fb{font-size:24px}
+  .tile-social h2,.tile-small__content h2{font-size:clamp(16px,4.5vw,20px)!important;margin-bottom:2px}
+  .tile-social p,.tile-small__content p{font-size:7px!important;line-height:1.18;letter-spacing:0}
+  .tile-social>.cta,.tile-small>.cta{
+    justify-self:start!important;align-self:end!important;
+    width:133px!important;max-width:min(100%,133px)!important;
+    min-height:27px!important;height:27px!important;font-size:7px!important;
+    padding:2px 3px 2px 7px!important;
+  }
+  .tile-social .cta__arrow,.tile-small .cta__arrow{width:21px!important;height:21px!important;font-size:14px!important}
+  .tile-reviews{padding:11px!important}
+  .review-header h2{font-size:25px}
+  .review-header p{font-size:10px}
+  .tile-reviews>.review-stage.review-stage--magic{min-height:203px}
+  .cta--reviews{min-height:37px;font-size:9px}
+}
+@media(max-width:360px){
+  .tile-social,.tile-small{grid-template-columns:81px minmax(0,1fr)!important;height:103px!important;min-height:103px!important;gap:7px!important}
+  .tile-social>.tile__art,.tile-small>.tile__art{width:81px!important;height:87px!important}
+  .tile-social h2,.tile-small__content h2{font-size:16px!important}
+  .tile-social p,.tile-small__content p{font-size:6.5px!important}
+  .tile-social>.cta,.tile-small>.cta{width:120px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ .light-trail,.ambient-glow,.ambient-stars i{animation:none!important}
+}
+
+/* Asegura que el relieve de reseñas no cause scroll lateral en iPhone. */
+html,body{overflow-x:clip}
+.light-mote{filter:drop-shadow(0 0 4px #fff9e2) drop-shadow(0 0 10px #e7a85b);opacity:.95}
+@media(prefers-reduced-motion:reduce){.light-motes{display:none}}
