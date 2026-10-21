@@ -192,18 +192,65 @@
   </main>
 
   <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"><span>✦</span><span id="toastText"></span><button type="button" id="closeToast" aria-label="Cerrar aviso">×</button></div>
-  <dialog class="promotions-dialog" id="promotionsDialog" aria-labelledby="promotionsTitle">
+  <!-- Sección Promociones · único bloque actualizado; las demás tarjetas se conservan -->
+  <dialog class="promotions-dialog vivi-offers-dialog" id="promotionsDialog" aria-labelledby="promotionsTitle">
     <button type="button" id="closePromotionsTop" class="promotions-dialog__x" aria-label="Cerrar promociones">×</button>
-    <div class="promotions-head"><span class="promotions-head__eyebrow">VIVI SPA &amp; STUDIO · PROMOCIONES DE MUESTRA</span>
-      <h2 id="promotionsTitle">Un detalle para <em>consentirte</em></h2>
-      <p>Así podrían verse las futuras promociones de VIVI. <strong>Son ejemplos de diseño, no ofertas vigentes.</strong></p>
+    <div class="vivi-offers-head">
+      <span class="vivi-offers-head__brand">VIVI <small>SPA &amp; STUDIO</small></span>
+      <span class="vivi-offers-head__kicker">✦ BEAUTY EXPERIENCES ✦</span>
+      <h2 id="promotionsTitle">Promociones <em>especiales</em></h2>
+      <p>Realza tu belleza con nuestros cuidados para el cabello.</p>
     </div>
-    <div class="promotions-list">
-      <article class="promo-item promo-item--one"><div class="promo-item__icon">✦</div><div class="promo-item__main"><span>PROPUESTA 01 · EJEMPLO</span><h3>Renueva tu cabello</h3><p>Diagnóstico capilar + recomendación de cuidado personalizado.</p><small>Propuesta referencial · consultar disponibilidad.</small><button type="button" class="promo-item__action" data-promo="Renueva tu cabello">Consultar por WhatsApp <span aria-hidden="true">↗</span></button></div></article>
-      <article class="promo-item promo-item--two"><div class="promo-item__icon">♡</div><div class="promo-item__main"><span>PROPUESTA 02 · EJEMPLO</span><h3>Ritual de hidratación</h3><p>Una experiencia enfocada en hidratación, suavidad y bienestar capilar.</p><small>Propuesta referencial · consultar disponibilidad.</small><button type="button" class="promo-item__action" data-promo="Ritual de hidratación">Consultar por WhatsApp <span aria-hidden="true">↗</span></button></div></article>
-      <article class="promo-item promo-item--three"><div class="promo-item__icon">✧</div><div class="promo-item__main"><span>PROPUESTA 03 · EJEMPLO</span><h3>Color &amp; brillo</h3><p>Asesoría de color y opciones de cuidado para acompañar el cambio de look.</p><small>Propuesta referencial · consultar disponibilidad.</small><button type="button" class="promo-item__action" data-promo="Color y brillo">Consultar por WhatsApp <span aria-hidden="true">↗</span></button></div></article>
+    <div class="vivi-offers-grid">
+      <article class="vivi-offer vivi-offer--botox">
+        <span class="vivi-offer__tag">PROMOCIÓN ESPECIAL</span>
+        <h3>Maratón de<br><em>Bótox</em> Capilar</h3>
+        <div class="vivi-offer__hero">
+          <img class="vivi-offer__photo" src="assets/promo-botox.webp" alt="Cabello largo, liso y brillante" loading="eager" width="224" height="505">
+          <div class="vivi-offer__sale vivi-offer__sale--botox"><small>DESDE</small><strong>S/ 80</strong></div>
+          <p class="vivi-offer__detail">El precio depende del análisis de nuestra especialista.</p>
+          <span class="vivi-offer__validity">✧ Hasta el 15 de noviembre</span>
+        </div>
+        <div class="vivi-offer__foot">
+          <span>✦ Evaluación profesional</span>
+          <span>✦ Precio sujeto a análisis</span>
+        </div>
+        <button type="button" class="promo-item__action vivi-offer__action" data-promo="Maratón de Bótox Capilar desde S/ 80 (sujeto a evaluación, hasta el 15 de noviembre)">Consultar por WhatsApp <span aria-hidden="true">↗</span></button>
+      </article>
+
+      <article class="vivi-offer vivi-offer--balayage">
+        <span class="vivi-offer__tag">OFERTA ESPECIAL</span>
+        <h3><em>Balayage</em></h3>
+        <div class="vivi-offer__hero">
+          <img class="vivi-offer__photo" src="assets/promo-balayage.webp" alt="Cabello con reflejos balayage en tonos cálidos" loading="eager" width="278" height="530">
+          <div class="vivi-offer__sale vivi-offer__sale--balayage"><small>DESCUENTO DE HASTA</small><strong>50<span>%</span></strong></div>
+          <p class="vivi-offer__detail">Según el tratamiento y las características del cabello.</p>
+          <span class="vivi-offer__validity">✧ Hasta el 15 de noviembre</span>
+        </div>
+        <div class="vivi-offer__foot">
+          <span>✦ Ilumina tu cabello</span>
+          <span>✦ Consulta las condiciones</span>
+        </div>
+        <button type="button" class="promo-item__action vivi-offer__action" data-promo="Balayage con descuento de hasta 50 % (hasta el 15 de noviembre)">Consultar por WhatsApp <span aria-hidden="true">↗</span></button>
+      </article>
+
+      <article class="vivi-offer vivi-offer--treatment">
+        <span class="vivi-offer__tag">CUIDA TU CABELLO</span>
+        <h3>Tratamiento<br><em>Capilar</em></h3>
+        <div class="vivi-offer__hero">
+          <img class="vivi-offer__photo" src="assets/promo-tratamiento.webp" alt="Experiencia de cuidado capilar en el salón" loading="eager" width="432" height="444">
+          <div class="vivi-offer__sale vivi-offer__sale--pending"><small>PRÓXIMAMENTE</small><strong>✧</strong></div>
+          <p class="vivi-offer__detail">Estamos preparando más información sobre este tratamiento.</p>
+          <span class="vivi-offer__validity">✧ Detalles por confirmar</span>
+        </div>
+        <div class="vivi-offer__foot">
+          <span>✦ Cuidado capilar</span>
+          <span>✦ Información pendiente</span>
+        </div>
+        <button type="button" class="promo-item__action vivi-offer__action" data-promo="Tratamiento Capilar (información pendiente)">Consultar por WhatsApp <span aria-hidden="true">↗</span></button>
+      </article>
     </div>
-    <div class="promotions-footer"><span>Estas promociones son ejemplos de presentación, no ofertas vigentes. El equipo de VIVI confirmará los servicios y precios por WhatsApp.</span></div>
+    <p class="vivi-offers-disclaimer">Consulta disponibilidad y condiciones antes de reservar. El tratamiento capilar aún no tiene una oferta confirmada.</p>
   </dialog>
   <dialog class="locations-dialog" id="locationsDialog" aria-labelledby="locationsTitle"><h2 id="locationsTitle">Nuestras sedes</h2><p>Esta es la ubicación compartida de Vivi Salón &amp; Spa. La segunda sede se añadirá cuando nos envíen su enlace.</p><div id="locationButtons" class="locations-dialog__links"></div><button type="button" id="closeLocations" class="dialog-close">Cerrar</button></dialog>
 

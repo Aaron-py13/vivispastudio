@@ -1018,3 +1018,90 @@ body{overflow-x:clip}
   .welcome__inner{animation:none!important}
   #welcome{transition:none!important}
 }
+
+
+/* =============================================
+   VIVI | Promociones oficiales · Octubre 2026
+   Cambios acotados al modal; no modifica portada.
+   ============================================= */
+.vivi-offers-dialog.promotions-dialog{
+  width:min(1120px,calc(100vw - 24px));max-width:1120px;
+  max-height:min(92dvh,1100px);padding:25px clamp(12px,2vw,28px) 22px;
+  background:linear-gradient(145deg,#fff8f0 0%,#ead5c4 50%,#fef5ea 100%);
+  color:#3d2a20;border:1px solid rgba(255,239,218,.96);
+  border-radius:26px;box-shadow:0 35px 95px rgba(25,13,9,.55);
+  overscroll-behavior:contain;
+}
+.vivi-offers-dialog .promotions-dialog__x{
+  position:sticky;float:right;top:0;right:0;z-index:9;
+  width:42px;height:42px;border-radius:50%;background:#fff8ee;
+  border:1px solid #dec4ac;box-shadow:0 4px 13px #6941272b;
+}
+.vivi-offers-head{text-align:center;padding:1px 46px 24px;clear:none}
+.vivi-offers-head__brand{font:400 37px/1 var(--serif);letter-spacing:.23em;display:block;text-indent:.23em;color:#36241d}
+.vivi-offers-head__brand small{display:block;font:500 10px/2 var(--sans);letter-spacing:.32em;text-indent:0}
+.vivi-offers-head__kicker{display:block;font-size:10px;letter-spacing:.23em;color:#ac7652;font-weight:700;margin-top:12px}
+.vivi-offers-head h2{font:400 clamp(29px,4.4vw,42px)/1.15 var(--serif);margin:9px 0 6px}
+.vivi-offers-head h2 em{color:#a57350}
+.vivi-offers-head p{font-size:13px;color:#715446;margin:0;line-height:1.5}
+.vivi-offers-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;align-items:stretch;clear:both}
+.vivi-offer{--card:#ead0b8;position:relative;display:flex;flex-direction:column;min-width:0;min-height:592px;padding:20px 16px 15px;overflow:hidden;isolation:isolate;
+  border:1px solid rgba(255,245,232,.9);border-radius:24px;
+  background:linear-gradient(154deg,#fff9f2 0%,var(--card) 73%,#c89d7c 100%);
+  box-shadow:0 12px 24px rgba(103,66,39,.11),inset 0 1px rgba(255,255,255,.8);
+}
+.vivi-offer--balayage{--card:#e4c2a8}
+.vivi-offer--treatment{--card:#e0c6b5}
+.vivi-offer::before{content:'✧';position:absolute;top:12px;right:17px;font-size:42px;color:#b58768;opacity:.42;pointer-events:none}
+.vivi-offer__tag{z-index:1;align-self:flex-start;max-width:calc(100% - 26px);border:1px solid #e5c8b1;border-radius:999px;
+  background:#fff4ebeb;color:#945e3b;padding:7px 12px;font-size:9px;font-weight:700;letter-spacing:.13em}
+.vivi-offer h3{position:relative;z-index:3;font:400 clamp(28px,3.3vw,39px)/1.02 var(--serif);letter-spacing:-.03em;margin:17px 0 0;min-height:82px;max-width:100%;}
+.vivi-offer h3 em{font-style:italic;font-weight:400;color:#825137}
+.vivi-offer--balayage h3{font-size:clamp(35px,4vw,52px)}
+.vivi-offer__hero{position:relative;flex:1;min-height:310px;margin:-9px -16px 0;isolation:isolate}
+.vivi-offer__hero::after{content:'';position:absolute;z-index:-1;inset:0;background:linear-gradient(90deg,#f9e9dc 0%,rgba(249,233,220,.92) 22%,rgba(249,233,220,.02) 75%);pointer-events:none}
+.vivi-offer__photo{position:absolute;z-index:-2;right:0;top:0;width:80%;height:100%;object-fit:cover;object-position:center 22%;mask-image:linear-gradient(90deg,transparent 0%,#000 40%);-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 40%)}
+.vivi-offer--balayage .vivi-offer__photo{object-position:50% 18%}
+.vivi-offer--treatment .vivi-offer__photo{width:100%;height:82%;top:15%;object-position:center;mask-image:linear-gradient(to bottom,transparent 0%,#000 25%);-webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 25%)}
+.vivi-offer__sale{position:absolute;z-index:2;left:17px;top:22px;max-width:73%;border-radius:15px;background:rgba(255,249,241,.85);border:1px solid rgba(231,195,168,.75);padding:10px 11px;color:#805037;box-shadow:0 8px 21px rgba(83,48,26,.07)}
+.vivi-offer__sale small{display:block;font-size:10px;letter-spacing:.13em;font-weight:700;line-height:1.35}
+.vivi-offer__sale strong{display:block;font:400 clamp(33px,3.4vw,48px)/1.1 var(--serif);white-space:nowrap}
+.vivi-offer__sale strong span{font-size:.65em}
+.vivi-offer__sale--balayage{background:linear-gradient(140deg,#b78561,#986545);color:#fff8f0;border-color:rgba(255,229,196,.7)}
+.vivi-offer__sale--balayage strong{font-size:clamp(53px,5.2vw,72px)}
+.vivi-offer__sale--pending{background:rgba(143,97,71,.9);color:#fff4ea;top:18px}
+.vivi-offer__sale--pending strong{font-size:40px;text-align:center}
+.vivi-offer__detail{position:absolute;z-index:2;left:17px;top:118px;width:46%;color:#5c4234;font-size:12px;line-height:1.48;font-weight:600;margin:0;text-shadow:0 1px rgba(255,255,255,.3)}
+.vivi-offer--balayage .vivi-offer__detail{top:176px}
+.vivi-offer--treatment .vivi-offer__detail{top:135px;width:60%;background:rgba(255,248,242,.75);padding:9px;border-radius:9px}
+.vivi-offer__validity{position:absolute;z-index:3;bottom:12px;left:14px;right:14px;padding:11px 8px;background:rgba(255,250,242,.91);
+  color:#77523d;border-radius:12px;box-shadow:0 4px 12px rgba(75,40,26,.08);font-size:12px;font-weight:700;text-align:center}
+.vivi-offer__foot{display:flex;gap:5px;justify-content:center;align-items:center;padding:12px 5px;margin-top:9px;border:1px solid #fff6e9;
+  background:linear-gradient(115deg,#fceede,#f2d9bf);border-radius:14px;color:#845a42;font-size:10px;font-weight:700;line-height:1.4;text-align:center}
+.vivi-offer__foot span{flex:1}
+.vivi-offer__foot span+span{border-left:1px solid #d8b59a;padding-left:6px}
+.vivi-offers-dialog .vivi-offer__action{flex:none;z-index:4;margin:11px 0 0;width:100%;border-radius:12px;font-size:11px;padding:12px 6px;}
+.vivi-offers-disclaimer{font-size:11px;color:#815f4c;line-height:1.5;text-align:center;margin:18px 10px 0}
+@media(min-width:850px){.vivi-offer{transition:transform .3s ease,box-shadow .3s ease}.vivi-offer:hover{transform:translateY(-4px);box-shadow:0 20px 32px rgba(103,66,39,.16)}}
+@media(max-width:800px){
+  .vivi-offers-dialog.promotions-dialog{width:min(650px,calc(100vw - 20px));max-height:92dvh;padding:16px 12px 20px;}
+  .vivi-offers-grid{grid-template-columns:1fr;gap:16px}
+  .vivi-offers-head{padding:0 26px 21px}
+  .vivi-offer{min-height:560px;max-width:470px;width:100%;margin:auto}
+  .vivi-offer h3{font-size:clamp(35px,7vw,46px)}
+  .vivi-offer--balayage h3{font-size:clamp(40px,8vw,50px)}
+  .vivi-offer__sale strong{font-size:43px}
+  .vivi-offer__sale--balayage strong{font-size:67px}
+  .vivi-offer__hero{min-height:300px}
+  .vivi-offer__detail{font-size:12px}
+}
+@media(max-width:380px){
+  .vivi-offers-dialog.promotions-dialog{padding:12px 8px}
+  .vivi-offer{padding:17px 11px 13px;min-height:535px}
+  .vivi-offer__hero{margin-left:-11px;margin-right:-11px}
+  .vivi-offer__tag{font-size:8px}
+  .vivi-offer__detail{width:49%;font-size:11px}
+  .vivi-offer--treatment .vivi-offer__detail{width:62%}
+  .vivi-offer__foot{font-size:9px}
+}
+@media(prefers-reduced-motion:reduce){.vivi-offer{transition:none}.vivi-offer:hover{transform:none}}

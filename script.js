@@ -8,10 +8,7 @@
 const ENLACES = {
   tiktok: 'https://www.tiktok.com/@vivispastudio',
   // Enlace directo para escribir una reseña, proporcionado por el cliente.
-  
-google: "https://www.google.com/maps/place//data=!4m4!3m3!1s0x9110168bb5b82105:0x294eb51a29b70926!9m1!1b1",
-
-
+  google: "https://www.google.com/maps/place//data=!4m4!3m3!1s0x9110168bb5b82105:0x294eb51a29b70926!9m1!1b1",
   // Número de WhatsApp proporcionado por el usuario.
   whatsapp: 'https://wa.me/51993516678',
   sedes: [
@@ -167,7 +164,7 @@ function whatsappMessage(message) {
 document.querySelectorAll('[data-promo]').forEach(button => {
   button.addEventListener('click', () => {
     const name = button.dataset.promo;
-    const message = `¡Hola, equipo de VIVI Spa & Studio! ✨ Vi en su página la propuesta de “${name}” y me interesa conocer más. ¿Podrían confirmarme si está disponible actualmente, qué incluye, el precio y qué horarios tienen? ¡Muchas gracias!`;
+    const message = `¡Hola, equipo de VIVI Spa & Studio! ✨ Vi en su página “${name}” y quisiera consultar disponibilidad, condiciones, precio y horarios. ¿Me pueden brindar más información? ¡Muchas gracias!`;
     whatsappMessage(message);
   });
 });
