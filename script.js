@@ -8,7 +8,7 @@
 const ENLACES = {
   tiktok: 'https://www.tiktok.com/@vivispastudio',
   // Enlace directo para escribir una reseña, proporcionado por el cliente.
-  google: "https://www.google.com/search?q=VIVI+spa+%26+estudio#lrd=0x9110168bb5b82105:0x294eb51a29b70926,3,,,,",
+  google: "https://www.google.com/search?q=VIVI+spa+%26+estudio#lrd=0x9110168bb5b82105:0x294eb51a29b70926,1,,,,",
   // Número de WhatsApp proporcionado por el usuario.
   whatsapp: 'https://wa.me/51993516678',
   sedes: [
