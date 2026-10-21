@@ -49,21 +49,35 @@ function enterSite(){
   welcomed = true;
   clearTimeout(closeTimeout);
   document.body.classList.add('is-entered');
+  if (document.activeElement === skip) skip.blur();
   welcome.setAttribute('aria-hidden','true');
   welcome.inert = true;
-  if (document.activeElement === skip) skip.blur();
 }
 
 // Se muestra una bienvenida muy breve, no una pantalla de carga artificial larga.
 // En la misma pestaña no vuelve a interrumpir si el visitante regresa.
 let alreadySeen = false;
 try{alreadySeen = sessionStorage.getItem('vivi-welcome-seen') === '1';sessionStorage.setItem('vivi-welcome-seen','1');}catch(_e){}
-if (mobileLite || reducedMotion || alreadySeen) {
-  enterSite(); // sin espera ni animación de entrada en móviles
+// En móviles la entrada dura menos de un segundo: visible pero sin carga ficticia.
+// No dependemos de sessionStorage en móvil: cada recarga muestra la bienvenida.
+// La página principal se renderiza inmediatamente detrás de la bienvenida.
+if (reducedMotion) {
+  enterSite();
+} else if (mobileLite) {
+  closeTimeout = window.setTimeout(enterSite, 950);
+} else if (alreadySeen) {
+  enterSite();
 } else {
   closeTimeout = window.setTimeout(enterSite, 1450);
 }
 skip.addEventListener('click', enterSite);
+
+// En teléfonos se navega en la MISMA pestaña: evita que las pestañas
+// emergentes bloqueadas impidan abrir la página de reseñas.
+const reviewLink = document.getElementById('googleReviewLink');
+if (reviewLink && mobileLite) {
+  reviewLink.setAttribute('target', '_self');
+}
 window.addEventListener('pageshow', e => { if(e.persisted) enterSite(); });
 
 function notify(message){

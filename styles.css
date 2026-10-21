@@ -946,3 +946,75 @@ body{overflow-x:clip}
     animation: none !important;
   }
 }
+
+
+/* ====================================================
+   VIVI · Bienvenida suave y Google móvil — v2026-10-21
+   El bloque anterior ocultaba #welcome en móviles.
+   Conservamos las optimizaciones ligeras, pero recuperamos
+   una entrada de menos de 1 segundo sin filtros costosos.
+   ==================================================== */
+.review-mobile-instructions,.review-mobile-fallback{display:none}
+@media (max-width:850px), (pointer:coarse){
+  /* Importante: anular el display:none de la optimización previa. */
+  #welcome{
+    display:grid!important;
+    background:linear-gradient(145deg,#60402f 0%,#936b4b 55%,#634230 100%)!important;
+    transition:opacity .24s ease-out,visibility .24s ease-out!important;
+    visibility:visible;
+    opacity:1;
+    pointer-events:auto;
+    box-shadow:none!important;
+    contain:layout paint;
+  }
+  #welcome::before{display:none!important}
+  .welcome__inner{
+    animation:viviMobileEnter .43s ease-out both!important;
+    text-shadow:none!important;
+  }
+  .welcome__lotus{animation:none!important;text-shadow:none!important}
+  .welcome__progress{display:none!important}
+  .welcome__brand{text-shadow:none!important}
+  .welcome__skip{background:rgba(255,245,225,.13);backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+  body.is-entered #welcome{
+    opacity:0!important;
+    visibility:hidden!important;
+    pointer-events:none!important;
+  }
+  .review-mobile-instructions{
+    display:block;
+    grid-area:reviewHelp;
+    margin:0 4px 3px!important;
+    font-size:11px!important;
+    line-height:1.45;
+    color:#6e4933;
+    text-align:center;
+    font-weight:400!important;
+    letter-spacing:0!important;
+  }
+  .review-mobile-fallback{
+    display:block;
+    grid-area:reviewFallback;
+    color:#663f27;
+    font-size:11px;
+    font-weight:700;
+    text-decoration:underline;
+    text-underline-offset:3px;
+    text-align:center;
+    padding:4px 10px 7px;
+    position:relative;
+    z-index:5;
+  }
+  /* Área de reseñas redimensionada para los dos accesos en móvil. */
+  .tile-reviews{
+    grid-template-areas:"reviewText" "reviewStage" "reviewButton" "reviewHelp" "reviewFallback"!important;
+  }
+}
+@keyframes viviMobileEnter{
+  from{opacity:0;transform:translateY(9px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@media(prefers-reduced-motion:reduce){
+  .welcome__inner{animation:none!important}
+  #welcome{transition:none!important}
+}
