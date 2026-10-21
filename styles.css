@@ -821,35 +821,128 @@ body{overflow-x:clip}
 }
 @media (prefers-reduced-motion:reduce){.review-popout{animation:none!important}}
 
-/* Optimización de rendimiento para móviles */
-@media (max-width: 600px) {
-  .ambient-photo {
+
+/* =============================================================
+   VIVI · MODO MOVIL LIGERO · Rendimiento
+   Se aplica solamente a pantallas pequeñas / entrada táctil.
+   Sobrescribe deliberadamente las animaciones heredadas.
+   NO modifica el aspecto completo ni el hover 3D en PC.
+   ============================================================= */
+@media (max-width: 850px), (pointer: coarse) {
+  html { scroll-behavior: auto !important; }
+
+  body {
+    background: linear-gradient(145deg,#f7eddf 0%,#efddc4 58%,#ead0aa 100%) !important;
+  }
+
+  /* Fondo estático: degradado y tres curvas finas sin repintados. */
+  .ambient {
+    background: linear-gradient(140deg,#f8eddd,#efdabc 65%,#e9cda5) !important;
+  }
+  .ambient-photo,
+  .ambient-glow,
+  .ambient-grain,
+  .ambient-stars,
+  .light-motes { display: none !important; }
+  .ambient-color {
+    background: radial-gradient(ellipse at 50% 20%,rgba(255,250,240,.45),transparent 75%) !important;
+  }
+  .light-trails {
+    opacity: .35 !important;
+    filter: none !important;
+    transform: none !important;
+  }
+  .light-trail {
+    display: none !important;
     animation: none !important;
+    transition: none !important;
+    stroke: #c49a64 !important;
+    stroke-width: 1.1 !important;
+    stroke-dasharray: none !important;
     filter: none !important;
   }
+  .trail-one,.trail-four,.trail-six { display: block !important; }
 
-  .ambient-glow,
-  .ambient-stars,
-  .light-motes {
-    display: none !important;
-  }
-
-  .light-trail {
+  /* Entrada instantánea sin pantalla de carga ni tarjetas ocultas. */
+  #welcome { display: none !important; }
+  .has-js body:not(.is-entered) .reveal,
+  .reveal,.is-entered .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
     animation: none !important;
   }
 
-  .trail-one,
-  .trail-two {
-    animation: trailDrift 35s linear infinite !important;
-  }
-
-  .showcase {
+  /* El cristal y los filtros durante scroll cuestan muchos repintados. */
+  .showcase,
+  .tile,
+  .review-stage,
+  .review-world,
+  .review-glass-art {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
+    filter: none !important;
+    will-change: auto !important;
   }
-
+  .showcase { box-shadow: none !important; }
   .tile {
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
+    box-shadow: 0 3px 10px rgba(104,66,35,.13) !important;
+    transform: none !important;
+    transform-style: flat !important;
+    backface-visibility: visible !important;
+  }
+  .tile:is(:hover,:focus-visible,:active) {
+    transform: none !important;
+    box-shadow: 0 3px 10px rgba(104,66,35,.13) !important;
+  }
+  .tile::after { display: none !important; }
+  .tile__art,.tile:is(:hover,:focus-visible) .tile__art {
+    transform: none !important;
+    filter: none !important;
+  }
+  .tile, .tile *, .tile::before, .tile::after,
+  .tile *::before, .tile *::after, .hero, .hero * {
+    animation: none !important;
+    transition: none !important;
+    will-change: auto !important;
+  }
+
+  /* Reseñas: estrella 3D visible, pero completamente quieta en móvil. */
+  .tile-reviews>.review-stage.review-stage--magic {
+    perspective: none !important;
+    transform-style: flat !important;
+    box-shadow: inset 0 1px rgba(255,255,255,.6) !important;
+    overflow: hidden !important;
+  }
+  .review-popout {
+    opacity: 1 !important;
+    transform: translate(-50%,-57%) rotate(2deg) scale(.88) !important;
+    filter: none !important;
+    animation: none !important;
+  }
+  .review-glass-art {
+    opacity: .14 !important;
+    transform: none !important;
+  }
+  .review-orbit,.review-glint { display: none !important; }
+  .review-floating-note {
+    opacity: .96 !important;
+    transform: none !important;
+    box-shadow: 0 2px 5px rgba(96,62,30,.12) !important;
+  }
+  .review-reveal-label {
+    opacity: 1 !important;
+    transform: translate(-50%,0) !important;
+    box-shadow: none !important;
+  }
+  .cta,.cta__arrow { box-shadow: none !important; }
+  .tile:active { opacity: .94 !important; }
+}
+
+/* Accesibilidad: también reducir movimiento en PC si se solicita. */
+@media (prefers-reduced-motion: reduce) {
+  .light-motes { display: none !important; }
+  .light-trail,.ambient-glow,.ambient-stars i,.review-popout {
+    animation: none !important;
   }
 }

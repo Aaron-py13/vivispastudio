@@ -7,9 +7,9 @@
 */
 const ENLACES = {
   tiktok: 'https://www.tiktok.com/@vivispastudio',
-  // Enlace recibido directamente del usuario: abre la ficha de Google Maps con las reseñas.
-  google: "https://www.google.com/maps/place/Vivi+Sal%C3%B3n+%26+Spa/@-13.4147589,-76.1410236,97a,73.8y,-2.33h,104.83t/data=!3m7!1e1!3m5!1shP0auG3WOby6E_Y_Ld1G1A!2e0!6shttps:%2F%2Fstreetviewpixels-pa.clients6.google.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-14.829074183604277%26panoid%3DhP0auG3WOby6E_Y_Ld1G1A%26yaw%3D-2.32576029699524!7i16384!8i8192!4m9!1m2!2m1!1s+Santos+Nagaro+536,+Chincha+Alta,+Peru,+056!3m5!1s0x9110168bb5b82105:0x294eb51a29b70926!8m2!3d-13.4146973!4d-76.1410022!16s%2Fg%2F11ddwyt0dn?entry=ttu&g_ep=EgoyMDI2MTAxNC4wIKXMDSoASAFQAw%3D%3D",
-  // Falta confirmar el número real. Nunca se inventará un enlace de WhatsApp.
+  // Enlace directo para escribir una reseña, proporcionado por el cliente.
+  google: "https://www.google.com/search?q=VIVI+spa+%26+estudio#lrd=0x9110168bb5b82105:0x294eb51a29b70926,3,,,,",
+  // Número de WhatsApp proporcionado por el usuario.
   whatsapp: 'https://wa.me/51993516678',
   sedes: [
     { nombre: 'Vivi Salón & Spa · Ver en Google Maps', url: "https://www.google.com/maps/place/Vivi+Sal%C3%B3n+%26+Spa/@-13.4147589,-76.1410236,97a,73.8y,-2.33h,104.83t/data=!3m7!1e1!3m5!1shP0auG3WOby6E_Y_Ld1G1A!2e0!6shttps:%2F%2Fstreetviewpixels-pa.clients6.google.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-14.829074183604277%26panoid%3DhP0auG3WOby6E_Y_Ld1G1A%26yaw%3D-2.32576029699524!7i16384!8i8192!4m9!1m2!2m1!1s+Santos+Nagaro+536,+Chincha+Alta,+Peru,+056!3m5!1s0x9110168bb5b82105:0x294eb51a29b70926!8m2!3d-13.4146973!4d-76.1410022!16s%2Fg%2F11ddwyt0dn?entry=ttu&g_ep=EgoyMDI2MTAxNC4wIKXMDSoASAFQAw%3D%3D" }
@@ -17,6 +17,21 @@ const ENLACES = {
 };
 
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+// Rendimiento: los móviles y dispositivos táctiles no mantienen efectos SVG
+// continuos ni una pantalla de bienvenida que retrase la navegación.
+const mobileLite = window.matchMedia('(max-width: 850px)').matches ||
+  window.matchMedia('(pointer: coarse)').matches;
+if (mobileLite || reducedMotion) {
+  document.documentElement.classList.add('mobile-lite');
+  const trails = document.querySelector('.light-trails');
+  if (trails) {
+    // SMIL (animateMotion) sigue ejecutándose aunque animation:none en CSS.
+    // Se pausa y se retiran sus nodos; las líneas SVG permanecen visibles.
+    if (typeof trails.pauseAnimations === 'function') trails.pauseAnimations();
+    trails.querySelectorAll('animateMotion').forEach(motion => motion.remove());
+  }
+}
+
 const welcome = document.getElementById('welcome');
 const skip = document.getElementById('skipWelcome');
 let welcomed = false;
@@ -43,7 +58,11 @@ function enterSite(){
 // En la misma pestaña no vuelve a interrumpir si el visitante regresa.
 let alreadySeen = false;
 try{alreadySeen = sessionStorage.getItem('vivi-welcome-seen') === '1';sessionStorage.setItem('vivi-welcome-seen','1');}catch(_e){}
-closeTimeout = window.setTimeout(enterSite, reducedMotion || alreadySeen ? 70 : 1750);
+if (mobileLite || reducedMotion || alreadySeen) {
+  enterSite(); // sin espera ni animación de entrada en móviles
+} else {
+  closeTimeout = window.setTimeout(enterSite, 1450);
+}
 skip.addEventListener('click', enterSite);
 window.addEventListener('pageshow', e => { if(e.persisted) enterSite(); });
 
