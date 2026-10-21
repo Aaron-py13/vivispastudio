@@ -204,7 +204,8 @@ const archivosPromosVivi = new Map();
 // la activación del usuario al esperar la descarga de la imagen.
 if (navigator.share && navigator.canShare && typeof File === 'function') {
   promocionesVivi.forEach(promo => {
-    const urlFoto = new URL(promo.foto, document.baseURI).href;
+    const img = document.querySelector(`.vivi-offer--${promo.clave === 'tratamiento' ? 'treatment' : promo.clave === 'botox' ? 'botox' : 'balayage'} .vivi-offer__photo`);
+    const urlFoto = img ? img.src : new URL(promo.foto, document.baseURI).href;
     fetch(urlFoto)
       .then(response => {
         if (!response.ok) throw new Error('Imagen no disponible');

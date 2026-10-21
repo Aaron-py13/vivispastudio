@@ -1059,8 +1059,8 @@ body{overflow-x:clip}
 .vivi-offer h3 em{font-style:italic;font-weight:400;color:#825137}
 .vivi-offer--balayage h3{font-size:clamp(35px,4vw,52px)}
 .vivi-offer__hero{position:relative;flex:1;min-height:310px;margin:-9px -16px 0;isolation:isolate}
-.vivi-offer__hero::after{content:'';position:absolute;z-index:-1;inset:0;background:linear-gradient(90deg,#f9e9dc 0%,rgba(249,233,220,.92) 22%,rgba(249,233,220,.02) 75%);pointer-events:none}
-.vivi-offer__photo{position:absolute;z-index:-2;right:0;top:0;width:80%;height:100%;object-fit:cover;object-position:center 22%;mask-image:linear-gradient(90deg,transparent 0%,#000 40%);-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 40%)}
+.vivi-offer__hero::after{content:'';position:absolute;z-index:1;inset:0;background:linear-gradient(90deg,#f9e9dc 0%,rgba(249,233,220,.92) 22%,rgba(249,233,220,.02) 75%);pointer-events:none}
+.vivi-offer__photo{position:absolute;z-index:0;right:0;top:0;width:80%;height:100%;object-fit:cover;object-position:center 22%;mask-image:linear-gradient(90deg,transparent 0%,#000 40%);-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 40%)}
 .vivi-offer--balayage .vivi-offer__photo{object-position:50% 18%}
 .vivi-offer--treatment .vivi-offer__photo{width:100%;height:82%;top:15%;object-position:center;mask-image:linear-gradient(to bottom,transparent 0%,#000 25%);-webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 25%)}
 .vivi-offer__sale{position:absolute;z-index:2;left:17px;top:22px;max-width:73%;border-radius:15px;background:rgba(255,249,241,.85);border:1px solid rgba(231,195,168,.75);padding:10px 11px;color:#805037;box-shadow:0 8px 21px rgba(83,48,26,.07)}
